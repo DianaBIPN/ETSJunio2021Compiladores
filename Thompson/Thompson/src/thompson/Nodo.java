@@ -5,21 +5,10 @@
  */
 package thompson;
 
-import java.io.IOException;
-import static thompson.Lenguaje.muestraContenido;
-
 /**
  *
  * @author Marisol
  */
-public class Thompson {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String [] args){
-        
-    }
-    
-    
+public class Nodo {
+    private char valor;
 }
