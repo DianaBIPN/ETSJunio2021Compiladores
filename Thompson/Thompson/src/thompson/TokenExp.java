@@ -9,14 +9,14 @@ package thompson;
  *
  * @author Marisol
  */
-public class Thompson {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String [] args){
-        
-    }
-    
-    
+public enum TokenExp {
+    PAR_IZQ,
+    PAR_DER,
+    ALTER,
+    CER_KLEENE,
+    CER_POS,
+    CONCA,
+    ALFABETO,
+    FINAL,
+    INVA
 }
