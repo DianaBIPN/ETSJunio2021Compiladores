@@ -15,7 +15,7 @@ import java.util.Vector;
  */
 public class Alfabeto implements Iterable<String>{
 
-    public static final String Vacio = "E";
+    public static final String VACIO = "E";
     private Vector<String> simbolos;
     
     public Alfabeto(String caracteres) {      
@@ -39,7 +39,7 @@ public class Alfabeto implements Iterable<String>{
     
     public String getSimbolo(int pos) {
         if (pos == getCantidad())
-            return Alfabeto.Vacio;
+            return Alfabeto.VACIO;
         else
             return simbolos.get(pos);
     }
@@ -49,7 +49,7 @@ public class Alfabeto implements Iterable<String>{
     }
     
      public int obtenerPosicion(String caracter) {
-        if (caracter.equals(Alfabeto.Vacio))
+        if (caracter.equals(Alfabeto.VACIO))
             return getCantidad();
         else
             return simbolos.indexOf(caracter);
