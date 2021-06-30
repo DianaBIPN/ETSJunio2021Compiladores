@@ -81,11 +81,9 @@ public class Alfabeto implements Iterable<String>{
        
         final Alfabeto other = (Alfabeto) obj;
        
-        // Si los tama�os son distintos, no pueden ser iguales.
         if (other.getCantidad() != this.getCantidad())
             return false;
        
-        // Verificamos cada uno de los simbolos
         for (int i=0; i < this.getCantidad(); i++) {
             String tmp1 = this.getSimbolo(i);
             String tmp2 = other.getSimbolo(i);
@@ -106,7 +104,7 @@ public class Alfabeto implements Iterable<String>{
     
     @Override
     public Iterator<String> iterator() {
-        return simbolos.iterator();//To change body of generated methods, choose Tools | Templates.
+        return simbolos.iterator();
     }
     
     
