@@ -9,6 +9,21 @@ package thompson;
  *
  * @author Marisol
  */
-public class AFN {
+public class AFN extends Automata{
+
+    public AFN() {
+        super();
+    }
+    
+    public AFN(Alfabeto alfabeto, String expReg){
+        super(alfabeto, expReg);
+    }
+    
+    public TablaTransicion getTablaTransicion(){
+        int cantFila = getEstados().cantidad();
+        int cantColumna = getAlfabeto().getCantidad() + 2;
+        
+        return llenarTablaTransicion(cantFila, cantColumna, 0);
+    }
     
 }

@@ -20,5 +20,43 @@ public class TablaTransicion {
         this.inicio = inicio;
     }
     
+    public int getFila(){
+        return datos.length;
+    }
     
+    public int getColumna(){
+        return inicio.length;
+    }
+    
+    public String getNombreColumna(int encabezadoColumna){
+        return inicio[encabezadoColumna];
+    }
+    
+    public Class<?> getNombreClass(int encabezadoColumna){
+        return getValor(0, encabezadoColumna).getClass();
+    }
+    
+    public boolean celdaEdit(int encabezadoFila, int encabezadoColumna){
+        return false;
+    }
+    
+    public Object getValor(int encabezadoFila, int encabezadoColumna ){
+        return datos[encabezadoFila] [encabezadoColumna];
+    }
+    
+    public void setValor(Object Valor, int encabezadoFila, int encabezadoColumna){
+        datos[encabezadoFila] [encabezadoColumna] = Valor;
+    }
+    
+    public void setEncabezado(String valor, int encabezadoColumna){
+        inicio[encabezadoColumna] = valor;
+    }
+    
+    public void addTableModelListener(TableModelListener listener){
+        return;
+    }
+    
+    public void removeTableModelListener(TableModelListener listener){
+        return;
+    }
 }
