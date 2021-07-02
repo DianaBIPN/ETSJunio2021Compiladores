@@ -8,7 +8,7 @@ package thompson;
  *
  * @author Marisol
  */
-class Transicion implements Comparable<Transicion> {
+public class Transicion implements Comparable<Transicion> {
     
     private Estado estado;
     private String simbolo;

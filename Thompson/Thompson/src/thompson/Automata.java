@@ -99,49 +99,45 @@ public abstract class Automata {
     
     public abstract TablaTransicion getTablaTransicion();
     
-    protected TablaTransicion llenarTablaTransicion(int cantidadFila, int cantidadColumna, int columnaDesde){
-        String[] inicio = new String[cantidadColumna];
-        Object[][] datos = new Object[cantidadFila][cantidadColumna];
-        
-        inicio[columnaDesde] = "Estados";
-        
-        for (int i = columnaDesde + 1; i < cantidadColumna; i++)
-            inicio[i] = getAlfabeto().getSimbolo(i - columnaDesde - 1);
-        
-        for (int i = 0; i < cantidadFila; i++)
-            datos[i] [columnaDesde] = getEstado(i);
-        
-        for(Estado e : getEstados()){
-            int fila = e.getIdentificador();
-            
+    protected TablaTransicion llenarTablaTransicion(int cantFil, int cantCol, int colDesde) {
+        String[] cabecera = new String[cantCol];
+        Object[][] datos = new Object[cantFil][cantCol];
+        cabecera[colDesde] = "Estados";
+       
+        for (int i=colDesde + 1; i < cantCol; i++)
+            cabecera[i] = getAlfabeto().getSimbolo(i - colDesde - 1);
+       
+        for (int i=0; i < cantFil; i++)
+            datos[i][colDesde] = getEstado(i);
+       
+        for (Estado e : getEstados()) {
+            int fil = e.getIdentificador();
+           
             for (Transicion t : e.getTransiciones()) {
-                int columna = getAlfabeto().obtenerPosicion(t.getSimbolo());
-                
-                if(datos[fila][columna + columnaDesde + 1] == null)
-                    datos[fila] [columna + columnaDesde + 1] = new Conjunto<Integer>();
-                
+                int col = getAlfabeto().obtenerPosicion(t.getSimbolo());
+               
+                if (datos[fil][col + colDesde + 1] == null)
+                    datos[fil][col + colDesde + 1] = new Conjunto<Integer>();
+               
                 int id = t.getEstado().getIdentificador();
-                ((Conjunto<Integer>) datos[fila][columna + columnaDesde + 1]).agregar(id);
+                ((Conjunto<Integer>) datos[fil][col + colDesde + 1]).agregar(id);
             }
         }
-        
+       
         String vacio = "";
-        
-        for (int i = 0; i < cantidadFila; i++) {
-            for (int j = columnaDesde; j < cantidadFila; j++) {
-                if (datos[i][j] == null) {
+        for (int i=0; i < cantFil; i++) {
+            for (int j=colDesde + 1; j < cantCol; j++) {
+                if (datos[i][j] == null)
                     datos[i][j] = vacio;
-                }
-                else{
-                    Conjunto c = (Conjunto) datos[i][j];
-                    
-                    if(c.cantidad() == 1)
+                else {                   
+					Conjunto c = (Conjunto) datos[i][j];
+                    if (c.cantidad() == 1)
                         datos[i][j] = c.obtenerPrimero();
                 }
             }
         }
-        
-        return new TablaTransicion(inicio, datos);       
+       
+        return new TablaTransicion(cabecera, datos);
     }
     
     public String toString(){
